@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>AĒRIS — Matter, made of light</title>
+  <meta name="description" content="AĒRIS — a spatial interface sculpted from liquid glass. An immersive digital object you can almost touch." />
+  <meta name="theme-color" content="#050608" />
+  <meta property="og:title" content="AĒRIS — Matter, made of light" />
+  <meta property="og:description" content="A spatial interface sculpted from liquid glass." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25' r='80%25'%3E%3Cstop offset='0%25' stop-color='%23e9eef7'/%3E%3Cstop offset='55%25' stop-color='%237d8aa5'/%3E%3Cstop offset='100%25' stop-color='%23151a26'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..800;1,100..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <noscript><style>#veil, #cursor { display: none !important; } #nav, #rail { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/build/three.module.js",
+        "three/addons/": "./vendor/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body data-loading>
+
+  <!-- ── Preloader veil ─────────────────────────────────────────── -->
+  <div id="veil" aria-hidden="true">
+    <div class="veil-center">
+      <div class="veil-mark">AĒRIS</div>
+      <div class="veil-sub">spatial&nbsp;glass</div>
+    </div>
+    <div class="veil-foot">
+      <span class="veil-count"><span id="count">00</span></span>
+      <span class="veil-bar"><span id="bar"></span></span>
+      <span class="veil-note">composing&nbsp;light</span>
+    </div>
+  </div>
+
+  <!-- ── Atmosphere overlays ────────────────────────────────────── -->
+  <div id="grain" aria-hidden="true"></div>
+  <div id="vignette" aria-hidden="true"></div>
+
+  <!-- ── Custom cursor ──────────────────────────────────────────── -->
+  <div id="cursor" aria-hidden="true">
+    <div class="cursor-lens"></div>
+    <div class="cursor-dot"></div>
+  </div>
+
+  <!-- ── 3D stage ───────────────────────────────────────────────── -->
+  <canvas id="gl" aria-hidden="true"></canvas>
+
+  <!-- ── Navigation ─────────────────────────────────────────────── -->
+  <header id="nav">
+    <div class="nav-pill glass">
+      <a class="brand" href="#hero" data-scroll>AĒRIS</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#material" data-scroll>Material</a>
+        <a href="#optics" data-scroll>Optics</a>
+        <a href="#interface" data-scroll>Interface</a>
+        <a href="#manifesto" data-scroll>Manifesto</a>
+      </nav>
+      <a class="btn btn--small" href="#finale" data-scroll data-magnetic><span>Reserve</span></a>
+    </div>
+  </header>
+
+  <!-- ── Chapter rail ───────────────────────────────────────────── -->
+  <aside id="rail" aria-hidden="true">
+    <div class="rail-label">
+      <span class="rail-idx" id="rail-idx">00</span>
+      <span class="rail-name" id="rail-name">Origin</span>
+    </div>
+    <div class="rail-track"><span class="rail-fill" id="rail-fill"></span></div>
+  </aside>
+
+  <main id="page">
+
+    <!-- ── Hero ─────────────────────────────────────────────────── -->
+    <section class="sec sec--hero" id="hero" data-chapter="Origin" data-idx="00">
+      <div class="hero-inner">
+        <p class="eyebrow hero-eyebrow"><span class="eyebrow-line"></span>AĒRIS · spatial glass · 002</p>
+        <h1 class="hero-title">
+          <span class="line"><span class="line-inner">Matter,</span></span>
+          <span class="line"><span class="line-inner">made of <em>light.</em></span></span>
+        </h1>
+        <p class="hero-sub">An interface you can almost touch — sculpted from liquid glass,
+        chrome and cold air, suspended in a slow current of light.</p>
+        <div class="hero-cta">
+          <a class="btn btn--primary" href="#material" data-scroll data-magnetic><span>Experience</span></a>
+          <a class="btn btn--ghost" href="#manifesto" data-scroll data-magnetic><span>The film <i>↗</i></span></a>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-hint-text">scroll</span>
+        <span class="scroll-hint-line"><span></span></span>
+      </div>
+    </section>
+
+    <!-- ── 01 · Material ────────────────────────────────────────── -->
+    <section class="sec sec--chapter" id="material" data-chapter="Material" data-idx="01">
+      <div class="panel glass" data-reveal>
+        <p class="eyebrow"><span class="eyebrow-line"></span>01 · Material</p>
+        <h2 class="panel-title" data-split>Liquid by <em>design.</em></h2>
+        <p class="panel-body">Every surface begins as a simulation of molten glass — cooled,
+        polished and suspended mid-flow. No seams. No pixels pretending.
+        One continuous material that bends the world behind it.</p>
+        <div class="stats">
+          <div class="stat"><span class="stat-n">1.48</span><span class="stat-l">refractive index</span></div>
+          <div class="stat"><span class="stat-n">120<i>hz</i></span><span class="stat-l">fluid resolve</span></div>
+          <div class="stat"><span class="stat-n">0</span><span class="stat-l">seams, anywhere</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 02 · Optics ──────────────────────────────────────────── -->
+    <section class="sec sec--chapter sec--right" id="optics" data-chapter="Optics" data-idx="02">
+      <div class="panel glass" data-reveal>
+        <p class="eyebrow"><span class="eyebrow-line"></span>02 · Optics</p>
+        <h2 class="panel-title" data-split>Light, bent <em>to will.</em></h2>
+        <p class="panel-body">A live dispersion engine splits every highlight into its
+        spectrum. Caustics bloom and fade as you move — the way light behaves
+        through crystal, not through a screen.</p>
+        <p class="panel-note">Rendered in real time. Nothing here is a video.</p>
+      </div>
+    </section>
+
+    <!-- ── 03 · Interface ───────────────────────────────────────── -->
+    <section class="sec sec--cards" id="interface" data-chapter="Interface" data-idx="03">
+      <div class="cards-head" data-reveal>
+        <p class="eyebrow eyebrow--center"><span class="eyebrow-line"></span>03 · Interface</p>
+        <h2 class="cards-title" data-split>Weightless, <em>yet present.</em></h2>
+      </div>
+      <div class="cards">
+        <article class="card glass" data-reveal>
+          <span class="card-index">i.</span>
+          <h3 class="card-title">Depth is <em>hierarchy</em></h3>
+          <p class="card-body">What matters floats closer. Everything else recedes
+          into the fog — softly out of focus, never out of reach.</p>
+          <span class="card-rule"></span>
+          <span class="card-foot">parallax field · 6 layers</span>
+        </article>
+        <article class="card glass" data-reveal>
+          <span class="card-index">ii.</span>
+          <h3 class="card-title">Touch <em>refracts</em></h3>
+          <p class="card-body">Press, and the surface yields like water. Ripples
+          carry your intent across the glass, edge to edge.</p>
+          <span class="card-rule"></span>
+          <span class="card-foot">haptic optics · 4ms</span>
+        </article>
+        <article class="card glass" data-reveal>
+          <span class="card-index">iii.</span>
+          <h3 class="card-title">Surfaces that <em>listen</em></h3>
+          <p class="card-body">Panels brighten toward your hand before you arrive.
+          Anticipation, engineered into the material itself.</p>
+          <span class="card-rule"></span>
+          <span class="card-foot">proximity field · 40cm</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── Manifesto ────────────────────────────────────────────── -->
+    <section class="sec sec--manifesto" id="manifesto" data-chapter="Manifesto" data-idx="04">
+      <p class="eyebrow eyebrow--center" data-reveal><span class="eyebrow-line"></span>Manifesto</p>
+      <p class="manifesto" id="manifesto-line">Interfaces should feel like objects —
+      with <em>weight,</em> <em>temperature,</em> and a <em>light</em> of their own.</p>
+    </section>
+
+    <!-- ── Finale ───────────────────────────────────────────────── -->
+    <section class="sec sec--finale" id="finale" data-chapter="Reserve" data-idx="05">
+      <div class="finale-inner">
+        <h2 class="finale-title" data-split>Hold the <em>future.</em></h2>
+        <p class="finale-sub">First light — spring 2027. A limited series of two thousand.</p>
+        <a class="btn btn--primary btn--large" href="#" data-magnetic><span>Reserve yours</span></a>
+      </div>
+    </section>
+
+    <!-- ── Footer ───────────────────────────────────────────────── -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand">AĒRIS</span>
+          <p>Sculpted from light,<br/>somewhere above the weather.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-h">Object</span>
+          <a href="#material" data-scroll>Material</a>
+          <a href="#optics" data-scroll>Optics</a>
+          <a href="#interface" data-scroll>Interface</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-h">Studio</span>
+          <a href="#manifesto" data-scroll>Manifesto</a>
+          <a href="#">Journal</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-h">Contact</span>
+          <a href="mailto:hello@aeris.glass">hello@aeris.glass</a>
+          <a href="#">@aeris.glass</a>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© 2026 AĒRIS Industries</span>
+        <span>Crafted in glass · no screens were harmed</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="vendor/gsap/gsap.min.js"></script>
+  <script src="vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
