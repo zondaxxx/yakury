@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>zondaxxx — full-stack, zero gravity</title>
+  <meta name="description" content="Zondaxxx — BMSTU student and junior full-stack developer in Moscow. Bots, apps and interfaces that feel almost physical." />
+  <meta name="theme-color" content="#000002" />
+  <meta property="og:title" content="zondaxxx — full-stack, zero gravity" />
+  <meta property="og:description" content="Bots, apps and interfaces that feel almost physical." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25' r='80%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff'/%3E%3Cstop offset='45%25' stop-color='%233a3f4a'/%3E%3Cstop offset='100%25' stop-color='%23000000'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..800;1,100..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <noscript><style>#veil, #cursor { display: none !important; } #nav, #rail { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../vendor/three/build/three.module.js",
+        "three/addons/": "../vendor/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body data-loading>
+
+  <!-- ── Preloader veil ─────────────────────────────────────────── -->
+  <div id="veil" aria-hidden="true">
+    <div class="veil-center">
+      <div class="veil-mark">ZONDAXXX</div>
+      <div class="veil-sub">moscow&nbsp;·&nbsp;earth</div>
+    </div>
+    <div class="veil-foot">
+      <span class="veil-count"><span id="count">00</span></span>
+      <span class="veil-bar"><span id="bar"></span></span>
+      <span class="veil-note">entering&nbsp;the&nbsp;void</span>
+    </div>
+  </div>
+
+  <!-- ── Atmosphere overlays ────────────────────────────────────── -->
+  <div id="grain" aria-hidden="true"></div>
+  <div id="vignette" aria-hidden="true"></div>
+
+  <!-- ── Custom cursor ──────────────────────────────────────────── -->
+  <div id="cursor" aria-hidden="true">
+    <div class="cursor-lens"></div>
+    <div class="cursor-dot"></div>
+  </div>
+
+  <!-- ── 3D stage ───────────────────────────────────────────────── -->
+  <canvas id="gl" aria-hidden="true"></canvas>
+
+  <!-- ── Navigation ─────────────────────────────────────────────── -->
+  <header id="nav">
+    <div class="nav-pill glass">
+      <a class="brand" href="#hero" data-scroll>ZONDAXXX</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#about" data-scroll>About</a>
+        <a href="#stack" data-scroll>Stack</a>
+        <a href="#work" data-scroll>Work</a>
+        <a href="#contact" data-scroll>Contact</a>
+      </nav>
+      <a class="btn btn--small" href="https://github.com/zondaxxx" target="_blank" rel="noopener" data-magnetic><span>GitHub <i>↗</i></span></a>
+    </div>
+  </header>
+
+  <!-- ── Chapter rail ───────────────────────────────────────────── -->
+  <aside id="rail" aria-hidden="true">
+    <div class="rail-label">
+      <span class="rail-idx" id="rail-idx">00</span>
+      <span class="rail-name" id="rail-name">Origin</span>
+    </div>
+    <div class="rail-track"><span class="rail-fill" id="rail-fill"></span></div>
+  </aside>
+
+  <main id="page">
+
+    <!-- ── Hero ─────────────────────────────────────────────────── -->
+    <section class="sec sec--hero" id="hero" data-chapter="Origin" data-idx="00">
+      <div class="hero-inner">
+        <p class="eyebrow hero-eyebrow">zondaxxx · full-stack developer · moscow</p>
+        <h1 class="hero-title">
+          <span class="line"><span class="line-inner">Full-stack,</span></span>
+          <span class="line"><span class="line-inner">zero <em>gravity.</em></span></span>
+        </h1>
+        <p class="hero-sub">BMSTU engineering student building bots, apps and interfaces
+        that feel almost physical — from Telegram automations to native iOS
+        and WebGL experiences like this one.</p>
+        <div class="hero-cta">
+          <a class="btn btn--primary" href="#work" data-scroll data-magnetic><span>Selected work</span></a>
+          <a class="btn btn--ghost" href="https://github.com/zondaxxx" target="_blank" rel="noopener" data-magnetic><span>GitHub <i>↗</i></span></a>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-hint-text">scroll</span>
+        <span class="scroll-hint-line"><span></span></span>
+      </div>
+    </section>
+
+    <!-- ── Marquee I ────────────────────────────────────────────── -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>python</span><i>✦</i><span>typescript</span><i>✦</i><span>swift</span><i>✦</i>
+        <span>javascript</span><i>✦</i><span>aiogram</span><i>✦</i><span>three.js</span><i>✦</i>
+        <span>node</span><i>✦</i><span>ios</span><i>✦</i><span>home assistant</span><i>✦</i>
+        <span>python</span><i>✦</i><span>typescript</span><i>✦</i><span>swift</span><i>✦</i>
+        <span>javascript</span><i>✦</i><span>aiogram</span><i>✦</i><span>three.js</span><i>✦</i>
+        <span>node</span><i>✦</i><span>ios</span><i>✦</i><span>home assistant</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ── 01 · Identity ────────────────────────────────────────── -->
+    <section class="sec sec--chapter" id="about" data-chapter="Identity" data-idx="01">
+      <div class="panel glass" data-reveal>
+        <p class="eyebrow"><span class="eyebrow-line"></span>01 · Identity</p>
+        <div class="id-row">
+          <img class="avatar" src="https://avatars.githubusercontent.com/u/86350995?v=4"
+               alt="zondaxxx" width="84" height="84" loading="lazy" />
+          <div class="id-meta">
+            <h2 class="panel-title panel-title--s" data-split>Hi, I'm <em>Zondaxxx.</em></h2>
+            <p class="id-line">BMSTU · IU5 · Moscow</p>
+          </div>
+        </div>
+        <p class="panel-body">A junior full-stack developer who learns by shipping.
+        I automate the boring, bridge the incompatible, and polish the
+        last ten percent — because that's where software starts to feel alive.</p>
+        <div class="stats">
+          <div class="stat"><span class="stat-n" data-count="25">0</span><span class="stat-l">public repos</span></div>
+          <div class="stat"><span class="stat-n" data-count="6">0</span><span class="stat-l">languages</span></div>
+          <div class="stat"><span class="stat-n" data-count="4">0</span><span class="stat-l">platforms</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 02 · Stack ───────────────────────────────────────────── -->
+    <section class="sec sec--stack" id="stack" data-chapter="Stack" data-idx="02">
+      <div class="stack-head" data-reveal>
+        <p class="eyebrow eyebrow--center">02 · Stack</p>
+        <h2 class="cards-title" data-split>Tools of the <em>dark arts.</em></h2>
+      </div>
+      <div class="stack-rows">
+        <div class="stack-row glass" data-reveal>
+          <span class="stack-idx">01</span>
+          <h3 class="stack-name" data-scramble>Python</h3>
+          <p class="stack-desc">Bots, automation, smart-home bridges — aiogram,
+          Homebridge, and scripts for everything that repeats.</p>
+        </div>
+        <div class="stack-row glass" data-reveal>
+          <span class="stack-idx">02</span>
+          <h3 class="stack-name" data-scramble>TypeScript</h3>
+          <p class="stack-desc">Student platforms and web apps — typed, tested, shipped.</p>
+        </div>
+        <div class="stack-row glass" data-reveal>
+          <span class="stack-idx">03</span>
+          <h3 class="stack-name" data-scramble>Swift</h3>
+          <p class="stack-desc">Native iOS — a full Anilibria client built from scratch.</p>
+        </div>
+        <div class="stack-row glass" data-reveal>
+          <span class="stack-idx">04</span>
+          <h3 class="stack-name" data-scramble>JavaScript</h3>
+          <p class="stack-desc">Interactive web — Three.js, GSAP, custom shaders.
+          You're looking at it.</p>
+        </div>
+        <div class="stack-row glass" data-reveal>
+          <span class="stack-idx">05</span>
+          <h3 class="stack-name" data-scramble>Shell &amp; glue</h3>
+          <p class="stack-desc">ffmpeg pipelines, converters, the unglamorous code
+          that keeps everything else honest.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 03 · Work ────────────────────────────────────────────── -->
+    <section class="sec sec--cards" id="work" data-chapter="Work" data-idx="03">
+      <div class="cards-head" data-reveal>
+        <p class="eyebrow eyebrow--center">03 · Selected work</p>
+        <h2 class="cards-title" data-split>Built in the <em>void.</em></h2>
+      </div>
+      <div class="cards cards--work">
+        <article class="card glass card--wide" data-reveal>
+          <span class="card-index">i.</span>
+          <h3 class="card-title">AĒRIS — liquid glass <em>experience</em></h3>
+          <p class="card-body">A cinematic WebGL landing: scroll-driven camera flight,
+          custom displacement shaders, physical glass with dispersion, bloom and
+          grain. No frameworks, no build step — just light.</p>
+          <span class="card-rule"></span>
+          <div class="card-links">
+            <span class="card-foot">javascript · three.js · gsap</span>
+            <span class="card-actions">
+              <a href="../" class="card-link" data-magnetic>Live ↗</a>
+              <a href="https://github.com/zondaxxx/yakury" target="_blank" rel="noopener" class="card-link" data-magnetic>Source ↗</a>
+            </span>
+          </div>
+        </article>
+        <article class="card glass" data-reveal>
+          <span class="card-index">ii.</span>
+          <h3 class="card-title">Anilibria <em>iOS</em></h3>
+          <p class="card-body">Native iOS client for Anilibria.tv — Swift,
+          hand-rolled networking, release-grade polish.</p>
+          <span class="card-rule"></span>
+          <div class="card-links">
+            <span class="card-foot">swift · uikit</span>
+            <a href="https://github.com/zondaxxx/Anilibria-ios-app" target="_blank" rel="noopener" class="card-link" data-magnetic>Source ↗</a>
+          </div>
+        </article>
+        <article class="card glass" data-reveal>
+          <span class="card-index">iii.</span>
+          <h3 class="card-title">IU5 <em>Library</em></h3>
+          <p class="card-body">Unofficial library platform for IU5 students
+          at BMSTU — search, catalogue, no queues.</p>
+          <span class="card-rule"></span>
+          <div class="card-links">
+            <span class="card-foot">typescript</span>
+            <a href="https://github.com/zondaxxx/IU5-Library" target="_blank" rel="noopener" class="card-link" data-magnetic>Source ↗</a>
+          </div>
+        </article>
+        <article class="card glass" data-reveal>
+          <span class="card-index">iv.</span>
+          <h3 class="card-title">HFT Telegram <em>Bot</em></h3>
+          <p class="card-body">Assistant bot for teachers — schedules, files
+          and routine, automated away with aiogram.</p>
+          <span class="card-rule"></span>
+          <div class="card-links">
+            <span class="card-foot">python · aiogram</span>
+            <a href="https://github.com/zondaxxx/hft-telegram-bot" target="_blank" rel="noopener" class="card-link" data-magnetic>Source ↗</a>
+          </div>
+        </article>
+        <article class="card glass" data-reveal>
+          <span class="card-index">v.</span>
+          <h3 class="card-title">neotgsend <em>engine</em></h3>
+          <p class="card-body">Broadcast engine for Telegram — mass messaging
+          over a user database, rate-limits respected.</p>
+          <span class="card-rule"></span>
+          <div class="card-links">
+            <span class="card-foot">javascript · node</span>
+            <a href="https://github.com/zondaxxx/neotgsend" target="_blank" rel="noopener" class="card-link" data-magnetic>Source ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── Marquee II ───────────────────────────────────────────── -->
+    <div class="marquee marquee--reverse" aria-hidden="true">
+      <div class="marquee-track">
+        <span>ship small</span><i>✦</i><span>ship often</span><i>✦</i><span>iterate in public</span><i>✦</i>
+        <span>automate the boring</span><i>✦</i><span>polish the last 10%</span><i>✦</i>
+        <span>ship small</span><i>✦</i><span>ship often</span><i>✦</i><span>iterate in public</span><i>✦</i>
+        <span>automate the boring</span><i>✦</i><span>polish the last 10%</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ── 04 · Method ──────────────────────────────────────────── -->
+    <section class="sec sec--cards sec--method" id="method" data-chapter="Method" data-idx="04">
+      <div class="cards-head" data-reveal>
+        <p class="eyebrow eyebrow--center">04 · Method</p>
+        <h2 class="cards-title" data-split>How the <em>black box</em> works.</h2>
+      </div>
+      <div class="cards">
+        <article class="card glass" data-reveal>
+          <span class="card-index">i.</span>
+          <h3 class="card-title">Ship beats <em>perfect</em></h3>
+          <p class="card-body">A student's superpower: release early, learn from
+          production, repeat until it's undeniable.</p>
+          <span class="card-rule"></span>
+          <span class="card-foot">cadence · weekly</span>
+        </article>
+        <article class="card glass" data-reveal>
+          <span class="card-index">ii.</span>
+          <h3 class="card-title">Tools should <em>disappear</em></h3>
+          <p class="card-body">Bots and bridges that remove friction — schedules,
+          smart homes, pipelines. The best automation is invisible.</p>
+          <span class="card-rule"></span>
+          <span class="card-foot">friction · zero</span>
+        </article>
+        <article class="card glass" data-reveal>
+          <span class="card-index">iii.</span>
+          <h3 class="card-title">Craft lives in <em>details</em></h3>
+          <p class="card-body">Easing curves, error states, empty states.
+          The last ten percent is the product.</p>
+          <span class="card-rule"></span>
+          <span class="card-foot">tolerance · 1px</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── Manifesto ────────────────────────────────────────────── -->
+    <section class="sec sec--manifesto" id="manifesto" data-chapter="Manifesto" data-idx="05">
+      <p class="eyebrow eyebrow--center" data-reveal>Manifesto</p>
+      <p class="manifesto" id="manifesto-line">Still a student — already <em>shipping.</em>
+      The rest is just <em>time.</em></p>
+    </section>
+
+    <!-- ── Contact ──────────────────────────────────────────────── -->
+    <section class="sec sec--finale" id="contact" data-chapter="Contact" data-idx="06">
+      <div class="finale-inner">
+        <h2 class="finale-title" data-split>Make something <em>with me.</em></h2>
+        <p class="finale-sub">Open to internships, collabs and weird ideas · Moscow / remote</p>
+        <div class="finale-cta">
+          <a class="btn btn--primary btn--large" href="https://github.com/zondaxxx" target="_blank" rel="noopener" data-magnetic><span>GitHub <i>↗</i></span></a>
+          <a class="btn btn--ghost btn--large" href="../" data-magnetic><span>See AĒRIS</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ───────────────────────────────────────────────── -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand">ZONDAXXX</span>
+          <p>Writing code in the dark,<br/>so it shines in the light.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-h">Map</span>
+          <a href="#about" data-scroll>Identity</a>
+          <a href="#stack" data-scroll>Stack</a>
+          <a href="#work" data-scroll>Work</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-h">Elsewhere</span>
+          <a href="https://github.com/zondaxxx" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="../">AĒRIS ↗</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-h">Now</span>
+          <a href="#" tabindex="-1">BMSTU · IU5</a>
+          <a href="#" tabindex="-1">Moscow, Earth</a>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© 2026 zondaxxx</span>
+        <span>Rendered live · zero screenshots harmed</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="../vendor/gsap/gsap.min.js"></script>
+  <script src="../vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="../vendor/lenis/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
